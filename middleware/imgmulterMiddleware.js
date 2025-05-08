@@ -3,7 +3,7 @@ const multer = require('multer') //import multer
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => { // path to store the file
-        callback(null, '/uploads')
+        callback(null, './uploads')
     },
     filename: (req, file, callback) => { // name in which the file is to be stored
         const fname = `image-${file.originalname}`
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, callback) => {
-    if (file.mineType == 'image/png' || file.mineType == 'image/jpg' || file.mineType == 'image/jpeg') {
+    if (file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'image/jpeg') {
         callback(null, true) // accept the file if it is png,jpg or jpeg
     } else {
         callback(null, false)

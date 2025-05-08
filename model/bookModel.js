@@ -13,7 +13,7 @@ const bookschema = new mongoose.Schema({
         type:Number,
         required : true
     },
-    image:{
+    imageurl:{
         type:String,
         required : true
     },
