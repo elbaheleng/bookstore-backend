@@ -12,7 +12,14 @@ const route = new express.Router()
 route.post("/register",userController.registerController)
 route.post("/login",userController.loginController)//path for login  
 route.post("/google-login",userController.googleLoginController) // path for google login
+route.get('/all-home-book',bookController.getHomeBookController)//path to get all home books
+//------------------USER----------------
 route.post("/add-book", jwtMiddleware,multerConfig.array('uploadedImages',3) ,bookController.addBookController) // path for adding books, uploadedImages itselt should be the name used in fronend
+route.get('/all-books',jwtMiddleware,bookController.getAllBookController)//path to get all books
+route.get('/view-book/:id',bookController.getABookController)//path to view a book
+//------------------ADMIN----------------
+route.get('/admin-all-books',jwtMiddleware, bookController.getAllBookAdminController)// path to get all books for admin
+route.put('/approve-book',jwtMiddleware, bookController.approveBookController)// path to approve a book
 
 
 //routes export
