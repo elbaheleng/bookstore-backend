@@ -95,7 +95,7 @@ exports.approveBookController = async (req, res) => {
     
     try {
         const existingBook = await books.findByIdAndUpdate({ _id }, { _id, title, author, noofpages, imageurl, price, dprice, abstract, publisher, language, isbn, category, uploadedImage, status: "approved", userMail, bought }, { new: true })
-        await existingBook.save()
+        //await existingBook.save() // here optional
         res.status(200).json(existingBook)
 
     } catch (error) {

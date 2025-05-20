@@ -4,6 +4,7 @@ const userController = require('./controllers/userController')
 const bookController = require('./controllers/bookController')
 const jwtMiddleware = require('./middleware/jwtMiddleware')
 const multerConfig = require('./middleware/imgmulterMiddleware')
+const jobController = require('./controllers/jobController')
 
 //create instance to acces the class router in express
 const route = new express.Router()
@@ -20,6 +21,10 @@ route.get('/view-book/:id',bookController.getABookController)//path to view a bo
 //------------------ADMIN----------------
 route.get('/admin-all-books',jwtMiddleware, bookController.getAllBookAdminController)// path to get all books for admin
 route.put('/approve-book',jwtMiddleware, bookController.approveBookController)// path to approve a book
+route.get('/all-users',jwtMiddleware,userController.getAllUsersController)//path to get all users
+
+route.post("/add-job", jobController.addJobController)
+
 
 
 //routes export
