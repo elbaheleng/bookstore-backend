@@ -62,7 +62,7 @@ exports.getAllBookController = async (req, res) => {
 //to get a particular book
 exports.getABookController = async (req, res) => {
     const { id } = req.params
-    console.log(id);
+   // console.log(id);
 
     try {
         const aBooks = await books.findOne({ _id: id })
