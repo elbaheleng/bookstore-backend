@@ -14,6 +14,7 @@ bookstoreServer.use(cors())//connet the server with frontend using cors
 bookstoreServer.use(express.json())//to parse JSON data, we use middleware
 bookstoreServer.use(route)// tell rserver to use route
 bookstoreServer.use('/upload',express.static('./uploads'))// to export the uploads folder from the server side
+bookstoreServer.use('/pdfupload',express.static('./pdfUploads'))// to export the pdfUploads folder from the server side
 
 
 //create port

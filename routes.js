@@ -28,6 +28,7 @@ route.put('/approve-book',jwtMiddleware, bookController.approveBookController)//
 route.get('/all-users',jwtMiddleware,userController.getAllUsersController)//path to get all users
 route.post("/add-job", jobController.addJobController)//path to add a new job
 route.delete("/delete-job/:id",jobController.deleteAJobController)//path to delete a job
+route.get("/all-applications", appController.getAllApplicationsController)// path to get all job applications
 
 
 
