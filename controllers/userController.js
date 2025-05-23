@@ -81,3 +81,17 @@ exports.getAllUsersController = async (req,res) =>{
          res.status(500).json(error)
     }
 }
+
+//update admin profile
+exports.updateAdminProfileController = async (req,res) =>{
+    const {username, password, profile} = req.body
+    const prof = req.file ? req.file.filename : profile
+    const email = req.payload
+     try {
+        const adminDetails = await users.findOneAndUpdate({email},{username, email, password, profile:prof},{new:true})
+        await adminDetails.save()
+        res.status(200).json(adminDetails)
+    } catch (error) {
+         res.status(500).json(error)
+    }
+}

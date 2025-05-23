@@ -29,7 +29,7 @@ route.get('/all-users',jwtMiddleware,userController.getAllUsersController)//path
 route.post("/add-job", jobController.addJobController)//path to add a new job
 route.delete("/delete-job/:id",jobController.deleteAJobController)//path to delete a job
 route.get("/all-applications", appController.getAllApplicationsController)// path to get all job applications
-
+route.put('/admin-profile-update',jwtMiddleware,multerConfig.single('profile'),userController.updateAdminProfileController)//to update admin profile
 
 
 //routes export
