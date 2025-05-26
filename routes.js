@@ -7,6 +7,7 @@ const multerConfig = require('./middleware/imgmulterMiddleware')
 const jobController = require('./controllers/jobController')
 const appController = require('./controllers/appController')
 const pdfmulterConfig = require('./middleware/pdfmulterMiddleware')
+const { JsonWebTokenError } = require('jsonwebtoken')
 
 //create instance to acces the class router in express
 const route = new express.Router()
@@ -22,6 +23,11 @@ route.post("/add-book", jwtMiddleware,multerConfig.array('uploadedImages',3) ,bo
 route.get('/all-books',jwtMiddleware,bookController.getAllBookController)//path to get all books
 route.get('/view-book/:id',bookController.getABookController)//path to view a book
 route.post("/apply-job",jwtMiddleware,pdfmulterConfig.single('resume'),appController.addApplicationController)//path to apply for a job
+route.put("/user-profile-update",jwtMiddleware,multerConfig.single('profile'),userController.updateUserProfileController)// to update user profile
+route.get("/all-books-added-by-user",jwtMiddleware,bookController.getAllUserAddedBooksController)//to get all books added by user
+route.get("/all-books-bought-by-user",jwtMiddleware,bookController.getAllUserBoughtBookController)//to get all books bought by user
+route.delete("/delete-book/:id",bookController.deleteAUserBookController)//path to delete a book by user
+route.put("/make-payment",jwtMiddleware,bookController.makePaymentController)//path to make payment
 //------------------ADMIN----------------
 route.get('/admin-all-books',jwtMiddleware, bookController.getAllBookAdminController)// path to get all books for admin
 route.put('/approve-book',jwtMiddleware, bookController.approveBookController)// path to approve a book

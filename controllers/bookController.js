@@ -73,6 +73,44 @@ exports.getABookController = async (req, res) => {
 
     }
 }
+//to get all books added by user
+exports.getAllUserAddedBooksController = async (req,res) => {
+    const email = req.payload
+    try {
+        const allBooksByUser = await books.find({userMail : email})
+        res.status(200).json(allBooksByUser)
+    } catch (error) {
+        res.status(500).json(error)
+
+    }
+}
+//to get all books bought by user
+exports.getAllUserBoughtBookController = async (req,res) => {
+    const email = req.payload
+    try {
+        const allBooksBoughtByUser = await books.find({bought : email})
+        res.status(200).json(allBooksBoughtByUser)
+    } catch (error) {
+        res.status(500).json(error)
+
+    }
+}
+
+
+exports.deleteAUserBookController = async (req,res) =>{
+    const {id} = req.params
+     try {
+        const deleteBook = await books.findByIdAndDelete({_id:id})
+        res.status(200).json("Book deleted successfully")
+    } catch (error) {
+        res.status(500).json(error)
+
+    }
+}
+//payment controller
+exports.makePaymentController = async (req,res) =>{
+    
+}
 //--------------------------------------------------------
 //------------admin--------------
 
