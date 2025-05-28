@@ -168,8 +168,8 @@ exports.makePaymentController = async (req, res) => {
             payment_method_types: ['card'], //purchased using card
             line_items: line_item, // details of produt that is being purchased
             mode: "payment",//make payment  or subscription or setup
-            success_url: 'http://localhost:5173/payment-success',//url to be shown if payment is successful
-            cancel_url: 'http://localhost:5173/payment-error'//url to be shown if payment is failed
+            success_url: 'https://bookstore-frontend-khaki.vercel.app/payment-success',//url to be shown if payment is successful
+            cancel_url: 'https://bookstore-frontend-khaki.vercel.app/payment-error'//url to be shown if payment is failed
         });
         console.log(session);
         
